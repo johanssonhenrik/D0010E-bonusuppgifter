@@ -5,7 +5,6 @@ public class Stopwatch {
 	private static boolean timerRunning;
 	private static long timerTime;
 	private static long timerStart;
-	private static long timerStop;
 	
 //	public static void main(String[] args) {
 //	double value = 0.99999999d;
@@ -102,12 +101,10 @@ public class Stopwatch {
 			timerRunning = false;	//Do nothing.
 		}if(timerRunning && timerStart != 0){ // If the time is running and the time has been running before.
 			timerRunning = false;
-			timerStop = System.currentTimeMillis();
 			timerTime = (System.currentTimeMillis() - timerStart) + timerTime;
 					
 		}else if(timerRunning){
 			timerRunning = false;
-			timerStop = System.currentTimeMillis();
 			timerTime = System.currentTimeMillis() - timerStart;
 		}
 	}
@@ -120,7 +117,6 @@ public class Stopwatch {
 	}
 	void reset(){
 		timerStart = 0;
-		timerStop = 0;
 		timerTime = 0;
 		timerRunning = false;
 	}
