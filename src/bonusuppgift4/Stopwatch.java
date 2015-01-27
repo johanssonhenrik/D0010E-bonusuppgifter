@@ -51,24 +51,25 @@ public class Stopwatch {
 //------------------------------------------------------------------Print 0.
 			stopwatch.start();
 					Thread.sleep(500);	//+500
+					//System.out.println(stopwatch.time()+" 1");
 			stopwatch.stop();
 					Thread.sleep(500);
-					System.out.println("timerTime = "+timerTime  + " timerStart = "+timerStart + " 1");
+					//System.out.println(stopwatch.time()+" 2");
 			stopwatch.stop();
 					Thread.sleep(500);
-					System.out.println("timerTime = "+timerTime  + " timerStart = "+timerStart + " 2");
+					//System.out.println(stopwatch.time()+" 3");
 			stopwatch.start();
 					Thread.sleep(500);	//+500
-					System.out.println("timerTime = "+timerTime  + " timerStart = "+timerStart + " 3");
+					//System.out.println(stopwatch.time()+" 4");
 			stopwatch.start();
 					Thread.sleep(500);	//+500
-					System.out.println("timerTime = "+timerTime  + " timerStart = "+timerStart + " 4");
+					//System.out.println(stopwatch.time()+" 5");
 			stopwatch.stop();
 					Thread.sleep(500);
-					System.out.println("timerTime = "+timerTime  + " timerStart = "+timerStart + " 5");
+					//System.out.println(stopwatch.time()+" 6");
 			stopwatch.start();
 					Thread.sleep(500);	//+500
-					System.out.println("timerTime = "+timerTime  + " timerStart = "+timerStart + " 6");
+					//System.out.println(stopwatch.time()+" 7");
 										//2500
 					
 			System.out.println(stopwatch.time());
@@ -97,8 +98,13 @@ public class Stopwatch {
 		}
 	}
 	void stop(){
-		if(!timerRunning){
+		if(!timerRunning && timerStart == 0){ //If the timer is not running and haven't been started before.
 			timerRunning = false;	//Do nothing.
+		}if(timerRunning && timerStart != 0){ // If the time is running and the time has been running before.
+			timerRunning = false;
+			timerStop = System.currentTimeMillis();
+			timerTime = (System.currentTimeMillis() - timerStart) + timerTime;
+					
 		}else if(timerRunning){
 			timerRunning = false;
 			timerStop = System.currentTimeMillis();
